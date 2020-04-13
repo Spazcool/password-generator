@@ -1,44 +1,64 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
+let generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  let password = generatePassword();
+  let passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 }
 
 function generatePassword(){
+  let charset = [];
+  let pass = [];
   let include = {
+    numberOfChars : document.querySelector("#numberCharacters").value,
     specials : document.querySelector("#specials").checked,
     numbers : document.querySelector("#numbers").checked,
     uppers : document.querySelector("#uppers").checked,
     lowers : document.querySelector("#lowers").checked,
     all : document.querySelector("#all").checked
   }
- 
-  switch(include['specials']){
-    case true:
-      return "`-=+_)(*&^%${#@!~})`";
-  }
-  // if(include.specials){
-  // }else if()
-  
 
+  if(include.specials){
+    for(let i = 33; i < 48; i++){
+      charset.push(String.fromCharCode(i));
+    }
+  }
+  if(include.numbers){
+    for(let i = 48; i < 58; i++){
+      charset.push(String.fromCharCode(i));
+    }
+  }
+  if(include.uppers){
+    for(let i = 65; i < 91; i++){
+      charset.push(String.fromCharCode(i));
+    }
+  }
+  if(include.lowers){
+    for(let i = 97; i < 123; i++){
+      charset.push(String.fromCharCode(i));
+    }
+  }
+  if(include.all){
+    for(let i = 33; i < 123; i++){
+      charset.push(String.fromCharCode(i));
+    }
+  }
+
+  for(let i = 0; i < include.numberOfChars; i++){
+    pass.push(charset[Math.floor(Math.random() * include.numberOfChars)]);
+  }
   
+  return pass.join('');
 }
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-// Specials
-// (e.g. ()!@#$%^&*_+-={}[]|\:";',./<>?~`)
-// Numbers
-// (e.g. 0 - 9)
-// Uppers
-// (e.g. A - Z)
-// Lowers
-// (e.g. a - z)
-// All
-// (e.g. Specials, Numbers, Uppers & Lowers)
-
+// todo
+// try filter for funsies
+// cleanup the front, the checkboxes sttacked looks weird
+// make the front sexy
+// tooltip for slider

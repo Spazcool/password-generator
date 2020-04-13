@@ -21,12 +21,32 @@
           use an outside source for randoization (weather, typing speed, some other api)
 
           slider for char count
-          check box for specials
-          check box for uppers
-          chcke box for lowers
-          check box for numbers -->
-      <form class="card">
+        -->
+      <form class="card row">
         <h2>Include:</h2>
+
+        <!-- <div class="form-group">
+          <label for="formControlRange">Number of characters</label>
+
+          <span class="font-weight-bold indigo-text mr-2 mt-1">0</span>
+          <input type="range" class="form-control-range" id="formControlRange">
+          <span class="font-weight-bold indigo-text mr-2 mt-1">50</span>
+
+        </div> -->
+        <!-- <div class="form-check"> -->
+        <div class="range-field  col-md-12">
+          <label class="form-check-label" for="includeNumberCharacters">Number of Characters</label>
+          <br/>
+          <input id="numberCharacters" class="no-border" type="range" value="8" min="8" max="30" />
+        </div>
+      </div>
+        <!-- <div class="d-flex justify-content-center my-4">
+          <span class="font-weight-bold indigo-text mr-2 mt-1">0</span>
+          <form class="range-field w-25">
+            <input class="border-0" type="range" min="0" max="100" />
+          </form>
+          <span class="font-weight-bold indigo-text ml-2 mt-1">100</span>
+        </div> -->
         <!-- <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
           <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
@@ -56,6 +76,7 @@
           <small id="lowersHelp" class="form-text text-muted">(e.g. a - z)</small>
         </div>
         
+        <!-- NEEDS TO BE A TOGGLE -->
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="all">
           <label class="form-check-label" for="includeAll">All</label>
