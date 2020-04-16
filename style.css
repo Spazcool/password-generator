@@ -10,11 +10,27 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 body {
   font-family: sans-serif;
-  background-color: #f9fbfd;
+  width: 100%;
+  height: 1000%;
+  color: black;
+  font-size: 1.5em;
+
+  /* background: white; */
+  background: -webkit-radial-gradient(circle, white, gray, black);
+  background: -o-radial-gradient(circle, white, gray, black);
+  background: -moz-radial-gradient(circle, white, gray, black);
+  background: radial-gradient(circle, white, gray, black);
+
+
+  /* background-color: #9fb8ad; */
+  /* background-image: linear-gradient(#9fb8ad 0%, #20a8b8 51%, #2cb5e8 75%); */
+  /* background-repeat: no-repeat; */
+  /* background-size:100vw 1000vh; */
 }
 
 .wrapper {
@@ -25,7 +41,7 @@ body {
 
 header {
   text-align: center;
-  padding: 20px;
+  /* padding: 20px; */
   padding-top: 0px;
   color: hsl(206, 17%, 28%);
 }
@@ -34,12 +50,14 @@ header {
   background-color: hsl(0, 0%, 100%);
   border-radius: 5px;
   border-width: 1px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
+  box-shadow: rgba(0, 0, 0, 0.15) 10px 10px 5px 5px;
   color: hsl(206, 17%, 28%);
   font-size: 18px;
   margin: 0 auto;
   max-width: 800px;
   padding: 30px 40px;
+
+  /* box-shadow: 10px 5px 5px red; */
 }
 
 .card-header::after {
@@ -72,7 +90,8 @@ header {
   clear: both;
 }
 
-.btn {
+/* .btn { */
+#generate{
   border: none;
   background-color: hsl(360, 91%, 36%);
   border-radius: 25px;
@@ -134,4 +153,19 @@ button[disabled] {
   .btn {
     font-size: 0.8rem;
   }
+}
+/* form{
+  margin-bottom: 10px;
+} */
+
+
+#displayNumberCharacters div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  border: 3px solid green;
+}
+#move{
+  margin-top: 10px;
 }
