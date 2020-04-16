@@ -1,20 +1,37 @@
-// Assignment Code
 let generateBtn = document.querySelector("#generate");
 let slider = document.querySelector("#numberCharacters");
 let tooltip = document.querySelector("#displayNumberCharacters");
+let copyBtn = document.querySelector("#copy");
+let passwordTxt = document.querySelector('#password');
+let toast = document.querySelector(".toast");
+let toastBdy = document.querySelector(".toast-body");
 
-// Write password to the #password input
-function writePassword() {
-  let password = generatePassword();
-  let passwordText = document.querySelector("#password");
-  // IF USER DOESN'T MAKE A SELECTION ASSIGN NOTHING 
-  password == undefined ? passwordText.value = '' : passwordText.value = password;
+// CHECK USER HAS MADE A SELECTION
+function checkDirtyFields(obj){
+  for(charType in obj){
+    if(obj[charType]["value"] === true){
+      return true;
+    }
+  }
+  return false;
+}
+
+function copyToClipboard() {
+  navigator.clipboard.writeText(passwordTxt.value)
+  .then(() => {
+    toastBdy.textContent = "Password Copied!";
+  })
+  .catch(() => {
+    toastBdy.textContent = "Something went wrong.";
+  })
+  .then(() =>{
+    $('.toast').toast("show");
+  });
 }
 
 function generatePassword(){
   let charset = [];
   let pass = [];
-  // let numberOfChars = document.querySelector("#numberCharacters").value;
   let numberOfChars = slider.value;
   let include = {
     specials : {
@@ -65,31 +82,20 @@ function randoChar(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-// CHECK USER HAS MADE A SELECTION
-function checkDirtyFields(obj){
-  for(charType in obj){
-    if(obj[charType]["value"] === true){
-      return true;
-    }
-  }
-  return false;
-}
-
 // TOOLTIP SLIDER UPDATER THINGY
 function updateTooltip(){
-  tooltip.children[0].innerHTML = `${slider.value}`;
+  tooltip.children[0].innerHTML = slider.value;
 }
 
-
-function copyToClipboard(element) {
-  var $temp = $("<input>");
-  $("body").append($temp);
-  $temp.val($(element).text()).select();
-  document.execCommand("copy");
-  $temp.remove();
+// Write password to the #password input
+function writePassword() {
+  let password = generatePassword();
+  let passwordText = document.querySelector("#password");
+  // IF USER DOESN'T MAKE A SELECTION ASSIGN NOTHING 
+  password == undefined ? passwordText.value = '' : passwordText.value = password;
 }
-
 
 // LISTENERS
+copyBtn.addEventListener("click", copyToClipboard);
 generateBtn.addEventListener("click", writePassword);
-slider.addEventListener("click", updateTooltip);
+slider.addEventListener("change", updateTooltip);

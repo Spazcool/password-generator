@@ -10,11 +10,11 @@
   </head>
 
   <body>
-    <nav>  
-      <header>
+    <header class="card">
+      <div class="card-header">
         <h1>Password Generator</h1>
-      </header>
-    </nav>
+      </div>
+    </header>
 
     <main class="container">
 
@@ -23,20 +23,21 @@
 
         <div class="form-row">
           <div class='col-md-6'>
+            <!-- CHARACTER COUNT SLIDER -->
             <div class='form-row'>
-            <div class="range-field col-md-8">
-              <label class="form-check-label" for="includeNumberCharacters">Number of Characters</label>
-              <br/>
-              <input id="numberCharacters" class="no-border" type="range" value="8" min="8" max="30" />
+              <div class="form-group col-xs-12 col-md-8">
+                <label class="form-check-label" for="includeNumberCharacters">Number of Characters</label>
+                <input id="numberCharacters" class="form-control-range" type="range" value="8" min="8" max="30" />
+              </div>
+              <div class="col-xs-12 col-md-4" id="displayNumberCharacters"><div>8</div></div>
             </div>
-            <div class="col-md-4" id="displayNumberCharacters"><div></div></div>
-          </div>
 
             <div class="form-check">
               <input type="checkbox" class="form-check-input" id="specials">
               <label class="form-check-label" for="includeSpecials">Specials</label>
               <small id="specialsHelp" class="form-text text-muted">(e.g. ()!@#$%^&*_+-={}[]|\:";',./&lt;&gt;?~`)</small>
             </div>
+
             <div class="form-check">
               <input type="checkbox" class="form-check-input" id="numbers">
               <label class="form-check-label" for="includeNumbers">Numbers</label>
@@ -70,7 +71,6 @@
       <div class="card" id="move">
         <div class="card-header">
           <h2>Password</h2>
-          <button type="button" class="btn btn-success" id="copy">Copy Password</button>
         </div>
         <div class="card-body">
           <textarea
@@ -80,9 +80,20 @@
             aria-label="Generated Password"
           ></textarea>
         </div>
+
+        <button type="button" class="btn btn-success" id="copy">Copy Password</button>
       </div>
 
-    </main>
+      <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; bottom: 10px; right: 10px;">
+        <div class="toast-body">
+        </div>
+      </div>
+
+      </main>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="script.js"></script>
   </body>
 </html>
