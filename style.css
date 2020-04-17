@@ -102,6 +102,12 @@ header {
   float: right;
 }
 
+.toast{
+  bottom: 10px;
+  position: fixed;
+  right: 10px;
+}
+
 .wrapper {
   padding-top: 30px;
   padding-left: 20px;
