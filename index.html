@@ -20,9 +20,9 @@
 
       <form class="card">
         <h2>Include:</h2>
-
         <div class="form-row">
           <div class='col-md-6'>
+
             <!-- CHARACTER COUNT SLIDER -->
             <div class='form-row'>
               <div class="form-group col-xs-12 col-md-8">
@@ -56,10 +56,10 @@
               <label class="form-check-label" for="includeLowers">Lowers</label>
               <small id="lowersHelp" class="form-text text-muted">(e.g. a - z)</small>
             </div>
-            <!-- TODO NEEDS TO BE A TOGGLE -->
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="all">
-              <label class="form-check-label" for="includeAll">All</label>
+            <!-- TOGGLE SWITCH -->
+            <div class="custom-control custom-switch">
+              <input type="checkbox" class="custom-control-input" id="all">
+              <label class="custom-control-label" for="all">All</label>
               <small id="allHelp" class="form-text text-muted">(e.g. Specials, Numbers, Uppers & Lowers)</small>
             </div>
           </div>
@@ -83,7 +83,7 @@
 
         <button type="button" class="btn btn-success" id="copy">Copy Password</button>
       </div>
-<!-- TODO NOT SHOWING ON MOBIEL-->
+      <!-- TOAST -->
       <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; bottom: 10px; right: 10px;">
         <div class="toast-body">
         </div>

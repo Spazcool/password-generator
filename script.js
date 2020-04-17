@@ -1,10 +1,14 @@
-let generateBtn = document.querySelector("#generate");
-let slider = document.querySelector("#numberCharacters");
-let tooltip = document.querySelector("#displayNumberCharacters");
 let copyBtn = document.querySelector("#copy");
+let generateBtn = document.querySelector("#generate");
 let passwordTxt = document.querySelector('#password');
-let toast = document.querySelector(".toast");
+let slider = document.querySelector("#numberCharacters");
 let toastBdy = document.querySelector(".toast-body");
+let tooltip = document.querySelector("#displayNumberCharacters");
+let toggle = document.querySelector("#all");
+let specials = document.querySelector("#specials");
+let numbers = document.querySelector("#numbers");
+let uppers = document.querySelector("#uppers");
+let lowers = document.querySelector("#lowers");
 
 // CHECK USER HAS MADE A SELECTION
 function checkDirtyFields(obj){
@@ -35,27 +39,27 @@ function generatePassword(){
   let numberOfChars = slider.value;
   let include = {
     specials : {
-      value : document.querySelector("#specials").checked,
+      value : specials.checked,
       min : 33, 
       max : 48
     },
     numbers : {
-      value : document.querySelector("#numbers").checked,
+      value : numbers.checked,
       min : 48,
       max : 58
     },
     uppers : {
-      value : document.querySelector("#uppers").checked,
+      value : uppers.checked,
       min : 65,
       max : 91
     },
     lowers : {
-      value : document.querySelector("#lowers").checked,
+      value : lowers.checked,
       min : 97,
       max : 123
     },
     all : {
-      value : document.querySelector("#all").checked,
+      value : all.checked,
       min : 33,
       max : 126
     }
@@ -63,9 +67,14 @@ function generatePassword(){
 
   if(checkDirtyFields(include)){
     while(pass.length < numberOfChars){
-      for(charType in include){
-        if(include[charType]["value"] === true && pass.length < numberOfChars){    
-          pass.push(String.fromCharCode(randoChar(include[charType]["min"], include[charType]["max"])));    
+      // DONT BOTHER WITH THE FOR...IN LOOP BELOW IF all IS CHECKED AS TRUE
+      if(include.all.value){
+        pass.push(String.fromCharCode(randoChar(include.all["min"], include.all["max"])));    
+      }else{
+        for(charType in include){
+          if(include[charType]["value"] === true && pass.length < numberOfChars){    
+            pass.push(String.fromCharCode(randoChar(include[charType]["min"], include[charType]["max"])));    
+          }
         }
       }
     }
@@ -73,13 +82,23 @@ function generatePassword(){
     return pass.join('');
 
   }else{
-    // TODO SOMETHING SEXIER THAN AN ALERT
-    alert('need to make a selection');  
+    toastBdy.textContent = "You need to make a selection!";
+    $('.toast').toast("show");
   }
 }
 
 function randoChar(min, max) {
   return Math.random() * (max - min) + min;
+}
+
+// CHECK ALL CHECKBOXES IF all IS CHECKED AS TRUE
+function checkAll(){
+  let onOff;
+  toggle.checked ? onOff = true : onOff = false;
+  specials.checked = onOff;
+  numbers.checked = onOff;
+  uppers.checked = onOff;
+  lowers.checked = onOff;
 }
 
 // TOOLTIP SLIDER UPDATER THINGY
@@ -99,3 +118,4 @@ function writePassword() {
 copyBtn.addEventListener("click", copyToClipboard);
 generateBtn.addEventListener("click", writePassword);
 slider.addEventListener("change", updateTooltip);
+toggle.addEventListener("change", checkAll);
