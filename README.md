@@ -22,7 +22,7 @@ No installation required.
 
 * JS & jQuery
 * HTML
-* CSS
+* CSS & Bootstrap
 
 ## Authors
 
