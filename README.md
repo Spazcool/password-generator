@@ -20,7 +20,7 @@ No installation required.
 
 ## Built With
 
-* JS & jQuery
+* JS
 * HTML
 * CSS & Bootstrap
 
